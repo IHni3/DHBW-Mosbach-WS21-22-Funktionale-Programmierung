@@ -31,13 +31,13 @@ erstes (x:_) = x
 
 filterGetArtikelnummer (id,_,_,_,_) = id
 
-filterArticleName a = filterGetArtikelnummer(erstes (filter (\(_,article,category,_,_) -> article == a || category == a) (artikel)))
+filterArtikelName a = filterGetArtikelnummer(erstes (filter (\(_,artikel,kategorie,_,_) -> artikel == a || kategorie == a) (artikel)))
 --Test
 
 anzahl :: (Int,Int,Int) -> String -> Int
-anzahl (year,month,day) article = length (filterArticleDate (year,month,day))
+anzahl (year,month,day) artikel = length (filterArtikelDatum (year,month,day))
 	where
-		filterArticleDate (year,month,day) = filter (\((y,m,d),(_,_),_) -> y == year && m == month && d == day && article == filterArticleName (article)) (buchungen)
+		filterArtikelDatum (year,month,day) = filter (\((y,m,d),(_,_),_) -> y == year && m == month && d == day && artikel == filterArtikelName (artikel)) (buchungen)
 		
 		
 		
